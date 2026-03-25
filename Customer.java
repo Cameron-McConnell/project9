@@ -1,6 +1,8 @@
+import java.io.*;
+import java.util.*;
 import java.util.Scanner;
 
-public class Customer extends User {
+public class Customer extends User implements Serializable {
 
     private CheckingAccount checking;
     private SavingAccount savings;
@@ -71,7 +73,7 @@ public class Customer extends User {
                     break;
 
                 case 3:
-                    changePin();
+                    changePin(input);
                     break;
 
             }
@@ -80,7 +82,7 @@ public class Customer extends User {
 
     }
 
-    public void changePin() {
+    public void changePin(Scanner input) {
 
         System.out.print("Enter new PIN: ");
         String newPin = input.nextLine();
@@ -96,6 +98,14 @@ public class Customer extends User {
         + "\nChecking Balance: " + checking.getBalanceString()
         + "\nSavings Balance: " + savings.getBalanceString();
 
+    }
+
+    public CheckingAccount getChecking(){
+	    return checking;
+    }
+
+    public SavingAccount getSavings(){
+	    return savings;
     }
 
 }
